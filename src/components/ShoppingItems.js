@@ -2,17 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SingleShoppingItem from './SingleShoppingItem';
 import itemInventory from '../itemInventory';
+import { addItem } from '../actions';
 
-export function ShoppingItems() {
+export function ShoppingItems(props) {
 
-  function handleItemAdd() {
-    console.log('in handleItemAdd');
+  function handleItemAdd(itemId) {
+    props.dispatch(addItem(itemId));
   }
 
   function getItems() {
     return itemInventory.map((item, index) => {
       return <SingleShoppingItem {...item}
-        handleItemAdd={handleItemAdd}
+        handleItemAdd={() => handleItemAdd(item.itemId)}
         key={index} />;
     });
   };
