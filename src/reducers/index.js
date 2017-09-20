@@ -39,6 +39,13 @@ const itemsReducer = (state=initialState, action) => {
     }
   }
 
+  if (action.type === actions.REMOVE_ITEM) {
+    console.log('REMOVE_ITEM hit reducer');
+    return Object.assign({}, state, {
+      itemsInCart: state.itemsInCart.filter(item => item.itemId !== action.itemId)
+    });
+  }
+
   if (action.type === actions.INCREMENT_ITEM) {
     return Object.assign({}, state, {
       itemsInCart: state.itemsInCart.map((item) => {

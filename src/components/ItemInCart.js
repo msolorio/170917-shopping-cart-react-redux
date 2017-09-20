@@ -7,6 +7,7 @@ export default function ItemInCart(props) {
 
   return (
     <li>
+      <div onClick={props.remove}>Remove</div>
       <span>{itemData.itemName}</span>&nbsp;
       <span>x</span>&nbsp;
 

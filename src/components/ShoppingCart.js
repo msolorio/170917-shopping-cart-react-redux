@@ -2,23 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ItemInCart from './ItemInCart';
 import itemInventory from '../itemInventory';
-import { incrementItem, decrementItem } from '../actions';
+import { incrementItem, decrementItem, removeItem } from '../actions';
 
 export function ShoppingCart(props) {
-
-  function increment(itemId) {
-    props.dispatch(incrementItem(itemId));
-  };
-
-  function decrement(itemId) {
-    props.dispatch(decrementItem(itemId));
-  }
-
   const items = props.itemsInCart.map((item, index) => {
+
+    function increment() {
+      props.dispatch(incrementItem(item.itemId));
+    };
+
+    function decrement() {
+      props.dispatch(decrementItem(item.itemId));
+    }
+
+    function remove() {
+      console.log('in removeItem');
+
+      props.dispatch(removeItem(item.itemId));
+    }
+
+
     return (
       <ItemInCart {...item}
-        increment={() => increment(item.itemId)}
-        decrement={() => decrement(item.itemId)}
+        remove={remove}
+        increment={increment}
+        decrement={decrement}
         key={index} />
     );
   });
