@@ -1,6 +1,7 @@
 import React from 'react';
 import ShoppingItems from './ShoppingItems';
 import ShoppingCart from './ShoppingCart';
+// import { connect } from 'react-redux';
 
 export default function App() {
   return (
@@ -10,3 +11,9 @@ export default function App() {
     </div>
   );
 };
+
+// const mapStateToProps = (state) => ({
+//   itemsInCart: state.itemsInCart
+// });
+
+// export default connect(mapStateToProps)(App);
